@@ -11,12 +11,14 @@ import java.text.SimpleDateFormat;
 public class WriteToFile {
 
 	public String fileName;
-	public BufferedWriter writer = null;
+	public BufferedWriter writer;
 	public File logFile;
 	public String timeLogInner;
 	Scanner sc;
+	Scanner inp;
 	
 	public	WriteToFile(String fileName){
+		
 		this.fileName =  fileName;
 		
 		this.logFile = new File(fileName);
@@ -24,10 +26,13 @@ public class WriteToFile {
 		timeLogInner = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 		
 		sc = new Scanner(System.in);
-
+		
 		
 		try {
-			writer = new BufferedWriter(new FileWriter(logFile));
+			writer = new BufferedWriter(new FileWriter(logFile, true));
+			
+			inp = new Scanner(logFile);
+			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -36,14 +41,15 @@ public class WriteToFile {
 		System.out.println("W konstruktorze: " + fileName);
 	}
 	
+	
 	 void writeToFile(){
 		 
 		 try {
 			 System.out.println(logFile.getCanonicalPath());
-			 writer.write("jxcv05\n");
-			 writer.write(timeLogInner+"\t");
+			 
+			 writer.write("\n"+timeLogInner+"\t");
 			 System.out.println("\n co wpisac do pliku?: \n");
-			writer.write(sc.next());
+			 writer.write(sc.next());
 			 
 		 } catch (Exception e) {			 
 			 e.printStackTrace();			 
@@ -60,6 +66,14 @@ public class WriteToFile {
 	 
 	 
 	 void readFromFile() {
+		 String infoFromFile = null ;
+		 
+		 
+		while(inp.hasNext())
+		 {
+		 infoFromFile = inp.next();
+		 System.out.println(infoFromFile);
+		 }
 		 
 	 }
 	 

@@ -6,8 +6,12 @@ public class App {
 				
 		WriteToFile readWriteTerminal = new WriteToFile("abc.txt");
 		
-		readWriteTerminal.displayOnScreen();
-		readWriteTerminal.writeToFile();
+		//readWriteTerminal.displayOnScreen();
+		//readWriteTerminal.writeToFile();
+		//readWriteTerminal.readFromFile();
+		
+		TimeIssues fileTime = new TimeIssues();
+		fileTime.timeSettings();
 
 	}
 
